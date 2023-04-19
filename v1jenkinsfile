@@ -4,14 +4,14 @@ pipeline {
     stages {
         stage('Hai') {
             steps {
-                echo "Hello World"
+                echo 'Hello World'
             }
         }
     }
 #always : it runs always
     post {
         always {
-            echo "I will say hello again"
+            echo 'I will say hello again'
         }
     }
 }
