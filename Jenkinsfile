@@ -4,7 +4,7 @@ pipeline {
     }
     environment {
         SAMPLE_URL = "google.com"
-        SSH         = credentials(AWS_workstation_ssh)
+        SSH         = credentials('AWS_workstation_ssh')
     }
 
     stages {
