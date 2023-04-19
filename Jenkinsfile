@@ -10,4 +10,10 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            echo 'I will say hello again'
+        }
+    }
 }
