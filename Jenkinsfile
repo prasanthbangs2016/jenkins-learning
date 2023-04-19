@@ -4,6 +4,7 @@ pipeline {
     }
     environment {
         SAMPLE_URL = "google.com"
+        SSH         = credentials(AWS_workstation_ssh)
     }
 
     stages {
@@ -17,6 +18,7 @@ pipeline {
             steps {
                 echo "Hello Hello"
                 echo "URL = ${SAMPLE_URL}"
+                echo "${SSH}"
             }
         }
     }
