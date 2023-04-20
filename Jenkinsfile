@@ -2,6 +2,8 @@ pipeline {
     agent {
         node { label 'AWS_Workstation'}
     }
+    triggers { pollSCM('* * * * *') }
+
     options { disableConcurrentBuilds() }
 
     environment {
@@ -25,6 +27,16 @@ pipeline {
         stage('Hai') {
             steps {
                 echo "Hello World"
+
+                echo "Hello ${params.PERSON}"
+
+                echo "Biography: ${params.BIOGRAPHY}"
+
+                echo "Toggle: ${params.TOGGLE}"
+
+                echo "Choice: ${params.CHOICE}"
+
+                echo "Password: ${params.PASSWORD}"
             }
         }
 
