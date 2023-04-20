@@ -170,8 +170,8 @@ pipeline {
     stages {
         stage('DEV') {
             when {
-                DEPLOY
-                //IS_TRUE is a true and conditions is true if the input is true
+                return DEBUG_BUILD
+                //return if this is false
             }
             steps {
                 echo 'one'
