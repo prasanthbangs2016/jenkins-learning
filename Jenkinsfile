@@ -82,11 +82,17 @@ pipeline {
 
     stages {
         stage(one) {
-            echo 'one'
+            steps{
+                echo 'one'
+            }
+
         }
 
         stage(two) {
-            echo 'two'
+            steps {
+                echo 'two'
+            }
+
         }
     }
 }
