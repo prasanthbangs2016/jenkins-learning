@@ -11,6 +11,9 @@ pipeline {
 
     triggers { pollSCM('* * * * *') }
 
+    //least used option
+    tools { maven 'MAVEN' }
+
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
