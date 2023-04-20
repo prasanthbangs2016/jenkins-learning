@@ -170,7 +170,7 @@ pipeline {
     stages {
         stage('DEV') {
             when {
-                expression { return DEBUG_BUILD }
+                expression { return DEPLOY }
                 //return if this is false
             }
             steps {
