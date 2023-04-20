@@ -76,17 +76,47 @@
 //    }
 //}
 
+//pipeline {
+//    agent any
+//
+//    stages {
+//        stage('one') {
+//            steps {
+//                echo 'one'
+//            }
+//        }
+//
+//        stage('two') {
+//            steps {
+//                echo 'two'
+//            }
+//        }
+//    }
+//}
+
+
 pipeline {
     agent any
 
+    parameters {
+        choice(name: 'DEPLOY_TO', choices: ['', 'DEV', 'PROD'], description: 'choose the environment')
+
+    }
+
     stages {
-        stage('one') {
+        stage('DEV') {
+            when {
+                environment name: 'DEPLOY_TO', value: 'DEV'
+            }
             steps {
                 echo 'one'
             }
         }
 
-        stage('two') {
+        stage('PROD') {
+            when {
+                environment name: 'DEPLOY_TO', value: 'PROD'
+            }
             steps {
                 echo 'two'
             }
