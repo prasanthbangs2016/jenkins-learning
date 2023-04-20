@@ -76,26 +76,24 @@
 //    }
 //}
 
-
 pipeline {
     agent any
 
     stages {
-        stage(one) {
-            steps{
+        stage('one') {
+            steps {
                 echo 'one'
             }
-
         }
 
-        stage(two) {
+        stage('two') {
             steps {
                 echo 'two'
             }
-
         }
     }
 }
+
 
 
 
