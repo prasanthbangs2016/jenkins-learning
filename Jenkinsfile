@@ -95,18 +95,83 @@
 //}
 
 
+//pipeline {
+//    agent any
+//
+//    parameters {
+//        choice(name: 'DEPLOY_TO', choices: ['', 'DEV', 'STAGE', 'PROD'], description: 'choose the environment')
+//
+//    }
+//
+//    stages {
+//        stage('DEV') {
+//            when {
+//                environment name: 'DEPLOY_TO', value: 'DEV'
+//            }
+//            steps {
+//                echo 'one'
+//            }
+//        }
+//
+//        stage('PROD') {
+//            when {
+//                environment name: 'DEPLOY_TO', value: 'PROD'
+//            }
+//            steps {
+//                echo 'two'
+//            }
+//        }
+//    }
+//}
+
+
+//pipeline {
+//    agent any
+//
+//    parameters {
+//        choice(name: 'DEPLOY_TO', choices: ['', 'DEV', 'STAGE', 'PROD'], description: 'choose the environment')
+//
+//    }
+//
+//    stages {
+//        stage('DEV') {
+//            when {
+//                environment name: 'DEPLOY_TO', value: 'DEV'
+//            }
+//            steps {
+//                echo 'one'
+//            }
+//        }
+//
+//        stage('PROD') {
+//            when {
+//                expression { BRANCH_NAME ==~ /(production|staging)/ }
+//                anyOf {
+//                    environment name: 'DEPLOY_TO', value: 'PROD'
+//                    environment name: 'DEPLOY_TO', value: 'STAGE'
+//                }
+//            }
+//            steps {
+//                echo 'two'
+//            }
+//        }
+//    }
+//}
+
+
 pipeline {
     agent any
 
     parameters {
-        choice(name: 'DEPLOY_TO', choices: ['', 'DEV', 'PROD'], description: 'choose the environment')
+        booleanParam(name: 'DEPLOY', defaultValue: true, description: 'DEPLOY')
 
     }
 
     stages {
         stage('DEV') {
             when {
-                environment name: 'DEPLOY_TO', value: 'DEV'
+                DEPLOY
+                //IS_TRUE is a true and conditions is true if the input is true
             }
             steps {
                 echo 'one'
@@ -123,6 +188,7 @@ pipeline {
         }
     }
 }
+
 
 
 
