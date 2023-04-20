@@ -2,7 +2,7 @@ pipeline {
     agent {
         node { label 'AWS_Workstation'}
     }
-    triggers { pollSCM('* * * * *') }
+
 
     options { disableConcurrentBuilds() }
 
@@ -10,6 +10,8 @@ pipeline {
         SAMPLE_URL = "google.com"
         SSH         = credentials('AWS_workstation_ssh')
     }
+
+    triggers { pollSCM('* * * * *') }
 
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
