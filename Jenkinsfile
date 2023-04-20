@@ -2,8 +2,6 @@ pipeline {
     agent {
         node { label 'AWS_Workstation'}
     }
-
-
     options { disableConcurrentBuilds() }
 
     environment {
@@ -11,7 +9,9 @@ pipeline {
         SSH         = credentials('AWS_workstation_ssh')
     }
 
-    triggers { pollSCM('* * * * *') }
+    triggers {
+        pollSCM('* * * * *')
+    }
 
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -53,7 +53,7 @@ pipeline {
 
     post {
         always {
-            echo 'I will say hello again pkp'
+            echo 'I will say hello again pkp1'
         }
     }
 }
